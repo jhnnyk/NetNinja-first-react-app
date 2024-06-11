@@ -4,12 +4,15 @@ import { useState } from 'react'
 function App() {
   // useState returns a variable and a function inside an array
   // we use array destructuring to capture those
+  const [showEvents, setShowEvents] = useState(true)
   const [events, setEvents] = useState([
-    {title: "mario's birthday bash", id: 1},
-    {title: "bowser's live stream", id: 2},
-    {title: 'race on moo moo farm', id: 3}
+    { title: "mario's birthday bash", id: 1 },
+    { title: "bowser's live stream", id: 2 },
+    { title: 'race on moo moo farm', id: 3 }
   ])
 
+  // when updating state depends on the previous state, it is best practice to do it like this
+  // to prevent weird things
   const handleClick = (id) => {
     setEvents((prevEvents) => {
       return prevEvents.filter((event) => {
@@ -17,13 +20,23 @@ function App() {
       })
     })
   }
-  // when updating state depends on the previous state, it is best practice to do it like this
-  // to prevent weird things
 
   return (
     <div className="App">
+      <div>
+        {showEvents && (
+          <div>
+            <button onClick={() => setShowEvents(false)}>hide events</button>
+          </div>
+        )}
+        {!showEvents && (
+          <div>
+            <button onClick={() => setShowEvents(true)}>show events</button>
+          </div>
+        )}
+      </div>
 
-      {events.map((event) => (
+      {showEvents && events.map((event) => (
         <div key={event.id}>
           <h2>{event.title}</h2>
           <button onClick={() => handleClick(event.id)}>delete event</button>
