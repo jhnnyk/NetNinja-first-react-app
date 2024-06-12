@@ -22,9 +22,11 @@ function App() {
     })
   }
 
+  const subtitle = "All the latest events in Marioland"
+
   return (
     <div className="App">
-      <Title />
+      <Title title="Events in Your Area" subtitle={subtitle} />
       <div>
         {showEvents && (
           <div>
