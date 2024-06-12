@@ -1,7 +1,8 @@
 import './App.css'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
+import EventList from './components/EventList'
 
 function App() {
   // useState returns a variable and a function inside an array
@@ -45,14 +46,7 @@ function App() {
         </div>
       )}
 
-      {showEvents && events.map((event) => (
-        <React.Fragment key={event.id}>
-          <h2>{event.title}</h2>
-          <button onClick={() => handleClick(event.id)}>delete event</button>
-          {/* make the onClick an anonymous function so that it doesn't just run 
-          automatically when the component is rendered */}
-        </React.Fragment>
-      ))}
+      {showEvents && <EventList events={events} handleClick={handleClick} />}
 
       {/* <Modal>
         <h2>10% Off Coupon Code!!</h2>
