@@ -12,6 +12,7 @@ function App() {
     { title: "bowser's live stream", id: 2 },
     { title: 'race on moo moo farm', id: 3 }
   ])
+  const [showModal, setShowModal] = useState(true)
 
   // when updating state depends on the previous state, it is best practice to do it like this
   // to prevent weird things
@@ -21,6 +22,10 @@ function App() {
         return id !== event.id
       })
     })
+  }
+
+  const handleClose = () => {
+    setShowModal(false)
   }
 
   const subtitle = "All the latest events in Marioland"
@@ -44,14 +49,22 @@ function App() {
         <React.Fragment key={event.id}>
           <h2>{event.title}</h2>
           <button onClick={() => handleClick(event.id)}>delete event</button>
-          {/* make the onClick an anonymous function so that it doesn't just run automatically when the component is rendered */}
+          {/* make the onClick an anonymous function so that it doesn't just run 
+          automatically when the component is rendered */}
         </React.Fragment>
       ))}
 
-      <Modal>
+      {/* <Modal>
         <h2>10% Off Coupon Code!!</h2>
         <p>Use the code SK8ORDIE at the checkout</p>
-      </Modal>
+      </Modal> */}
+
+      {showModal && <Modal handleClose={handleClose}>
+        <h2>Terms & Conditions</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam eligendi similique
+          iure vero explicabo accusantium. Mollitia pariatur eum soluta impedit natus eos nobis
+          alias, sed dicta.</p>
+      </Modal>}
     </div>
   )
 }
