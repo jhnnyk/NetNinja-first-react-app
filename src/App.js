@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Title from './components/Title'
 
 function App() {
@@ -41,11 +41,11 @@ function App() {
       </div>
 
       {showEvents && events.map((event) => (
-        <div key={event.id}>
+        <React.Fragment key={event.id}>
           <h2>{event.title}</h2>
           <button onClick={() => handleClick(event.id)}>delete event</button>
           {/* make the onClick an anonymous function so that it doesn't just run automatically when the component is rendered */}
-        </div>
+        </React.Fragment>
       ))}
     </div>
   )
