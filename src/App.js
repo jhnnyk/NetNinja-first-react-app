@@ -1,5 +1,6 @@
 import './App.css'
 import { useState } from 'react'
+import Title from './components/Title'
 
 function App() {
   // useState returns a variable and a function inside an array
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div className="App">
+      <Title />
       <div>
         {showEvents && (
           <div>
