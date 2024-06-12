@@ -1,6 +1,7 @@
 import './App.css'
 import React, { useState } from 'react'
 import Title from './components/Title'
+import Modal from './components/Modal'
 
 function App() {
   // useState returns a variable and a function inside an array
@@ -27,18 +28,17 @@ function App() {
   return (
     <div className="App">
       <Title title="Events in Your Area" subtitle={subtitle} />
-      <div>
-        {showEvents && (
-          <div>
-            <button onClick={() => setShowEvents(false)}>hide events</button>
-          </div>
-        )}
-        {!showEvents && (
-          <div>
-            <button onClick={() => setShowEvents(true)}>show events</button>
-          </div>
-        )}
-      </div>
+
+      {showEvents && (
+        <div>
+          <button onClick={() => setShowEvents(false)}>hide events</button>
+        </div>
+      )}
+      {!showEvents && (
+        <div>
+          <button onClick={() => setShowEvents(true)}>show events</button>
+        </div>
+      )}
 
       {showEvents && events.map((event) => (
         <React.Fragment key={event.id}>
@@ -47,6 +47,11 @@ function App() {
           {/* make the onClick an anonymous function so that it doesn't just run automatically when the component is rendered */}
         </React.Fragment>
       ))}
+
+      <Modal>
+        <h2>10% Off Coupon Code!!</h2>
+        <p>Use the code SK8ORDIE at the checkout</p>
+      </Modal>
     </div>
   )
 }
