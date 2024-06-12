@@ -6,13 +6,13 @@ import Modal from './components/Modal'
 function App() {
   // useState returns a variable and a function inside an array
   // we use array destructuring to capture those
+  const [showModal, setShowModal] = useState(false)
   const [showEvents, setShowEvents] = useState(true)
   const [events, setEvents] = useState([
     { title: "mario's birthday bash", id: 1 },
     { title: "bowser's live stream", id: 2 },
     { title: 'race on moo moo farm', id: 3 }
   ])
-  const [showModal, setShowModal] = useState(true)
 
   // when updating state depends on the previous state, it is best practice to do it like this
   // to prevent weird things
@@ -65,6 +65,10 @@ function App() {
           iure vero explicabo accusantium. Mollitia pariatur eum soluta impedit natus eos nobis
           alias, sed dicta.</p>
       </Modal>}
+
+      <p>
+        <button onClick={() => setShowModal(true)}>T&C's</button>
+      </p>
     </div>
   )
 }
