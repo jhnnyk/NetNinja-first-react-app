@@ -53,7 +53,7 @@ function App() {
         <p>Use the code SK8ORDIE at the checkout</p>
       </Modal> */}
 
-      {showModal && <Modal handleClose={handleClose}>
+      {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
         <h2>Terms & Conditions</h2>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam eligendi similique
           iure vero explicabo accusantium. Mollitia pariatur eum soluta impedit natus eos nobis
@@ -61,7 +61,9 @@ function App() {
       </Modal>}
 
       <p>
-        <button onClick={() => setShowModal(true)}>T&C's</button>
+        <button onClick={() => setShowModal(true)} >
+          T&C's
+        </button>
       </p>
     </div>
   )
