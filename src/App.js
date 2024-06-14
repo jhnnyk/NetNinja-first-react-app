@@ -10,11 +10,14 @@ function App() {
   // we use array destructuring to capture those
   const [showModal, setShowModal] = useState(false)
   const [showEvents, setShowEvents] = useState(true)
-  const [events, setEvents] = useState([
-    { title: "mario's birthday bash", id: 1 },
-    { title: "bowser's live stream", id: 2 },
-    { title: 'race on moo moo farm', id: 3 }
-  ])
+  const [events, setEvents] = useState([])
+
+  const addEvent = (event) => {
+    setEvents((prevEvents) => {
+      return [...prevEvents, event]
+    })
+    setShowModal(false)
+  }
 
   // when updating state depends on the previous state, it is best practice to do it like this
   // to prevent weird things
@@ -24,10 +27,6 @@ function App() {
         return id !== event.id
       })
     })
-  }
-
-  const handleClose = () => {
-    setShowModal(false)
   }
 
   const subtitle = "All the latest events in Marioland"
@@ -54,8 +53,8 @@ function App() {
         <p>Use the code SK8ORDIE at the checkout</p>
       </Modal> */}
 
-      {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
-        <NewEventForm />
+      {showModal && <Modal isSalesModal={true}>
+        <NewEventForm addEvent={addEvent} />
       </Modal>}
 
       <p>
