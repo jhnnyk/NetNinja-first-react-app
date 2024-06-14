@@ -6,6 +6,7 @@ function EventList({ events, handleClick }) {
       {events.map((event) => (
         <div className={styles.card} key={event.id}>
           <h2>{event.title}</h2>
+          <p>{event.location} - {event.date}</p>
           <button onClick={() => handleClick(event.id)}>delete event</button>
           {/* make the onClick an anonymous function so that it doesn't just run 
           automatically when the component is rendered */}
