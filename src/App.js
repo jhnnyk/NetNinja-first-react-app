@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
 import EventList from './components/EventList'
+import NewEventForm from './components/NewEventForm'
 
 function App() {
   // useState returns a variable and a function inside an array
@@ -54,15 +55,12 @@ function App() {
       </Modal> */}
 
       {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
-        <h2>Terms & Conditions</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam eligendi similique
-          iure vero explicabo accusantium. Mollitia pariatur eum soluta impedit natus eos nobis
-          alias, sed dicta.</p>
+        <NewEventForm />
       </Modal>}
 
       <p>
         <button onClick={() => setShowModal(true)} >
-          T&C's
+          Add New Event
         </button>
       </p>
     </div>
